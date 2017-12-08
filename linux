@@ -1,0 +1,1086 @@
+/usr/bin/id: cannot find name for group ID 244272
+[yishac@motstand ~]$ cd pro5 
+[yishac@motstand pro5]$ ls
+build-Pro5Yisha-Desktop_Qt_5_9_1_GCC_64bit-Debug  Pro5Yisha  pro5Yisha0812
+[yishac@motstand pro5]$ cd pro5Yisha
+bash: cd: pro5Yisha: No such file or directory
+[yishac@motstand pro5]$ cd Pro5Yisha
+[yishac@motstand Pro5Yisha]$ ls
+main.cpp  mpi.h    opa_config.h      opa_util.h     Pro5Yisha.pro.user
+mpicxx.h  mpiof.h  opa_primitives.h  primitives
+mpif.h    mpio.h   opa_queue.h       Pro5Yisha.pro
+[yishac@motstand Pro5Yisha]$ /usr/lib64/openmpi/bin/mpic++ -o3 
+g++: fatal error: no input files
+compilation terminated.
+[yishac@motstand Pro5Yisha]$ /usr/lib64/openmpi/bin/mpic++ -o3 main.cpp -o run
+main.cpp: In function ‘int main(int, char**)’:
+main.cpp:89:34: error: ‘to_string’ was not declared in this scope
+   string argument = to_string(mcs);
+                                  ^
+main.cpp:92:21: error: no matching function for call to ‘std::basic_ofstream<char>::open(std::string&)’
+   ofile.open(fileout);
+                     ^
+main.cpp:92:21: note: candidate is:
+In file included from main.cpp:22:0:
+/usr/include/c++/4.8.2/fstream:713:7: note: void std::basic_ofstream<_CharT, _Traits>::open(const char*, std::ios_base::openmode) [with _CharT = char; _Traits = std::char_traits<char>; std::ios_base::openmode = std::_Ios_Openmode]
+       open(const char* __s,
+       ^
+/usr/include/c++/4.8.2/fstream:713:7: note:   no known conversion for argument 1 from ‘std::string {aka std::basic_string<char>}’ to ‘const char*’
+[yishac@motstand Pro5Yisha]$ /usr/lib64/openmpi/bin/mpic++ -std=c++11 -o3 main.cpp -o run
+[yishac@motstand Pro5Yisha]$ /usr/lib64/openmpi/bin/mpirun -np 8 ./run
+[motstand:08787] *** Process received signal ***
+[motstand:08787] Signal: Segmentation fault (11)
+[motstand:08787] Signal code: Address not mapped (1)
+[motstand:08787] Failing at address: 0x44000098
+[motstand:08788] *** Process received signal ***
+[motstand:08788] Signal: Segmentation fault (11)
+[motstand:08788] Signal code: Address not mapped (1)
+[motstand:08788] Failing at address: 0x44000098
+[motstand:08800] *** Process received signal ***
+[motstand:08800] Signal: Segmentation fault (11)
+[motstand:08800] Signal code: Address not mapped (1)
+[motstand:08800] Failing at address: 0x44000098
+[motstand:08789] *** Process received signal ***
+[motstand:08789] Signal: Segmentation fault (11)
+[motstand:08789] Signal code: Address not mapped (1)
+[motstand:08789] Failing at address: 0x44000098
+[motstand:08789] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7fc9161ae5e0]
+[motstand:08789] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7fc916c39ac6]
+[motstand:08789] [ 2] ./run[0x402473]
+[motstand:08789] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7fc915dfdc05]
+[motstand:08789] [ 4] ./run[0x4020b9]
+[motstand:08789] *** End of error message ***
+[motstand:08794] *** Process received signal ***
+[motstand:08794] Signal: Segmentation fault (11)
+[motstand:08794] Signal code: Address not mapped (1)
+[motstand:08794] Failing at address: 0x44000098
+[motstand:08794] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f9e9ccd55e0]
+[motstand:08794] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f9e9d760ac6]
+[motstand:08794] [ 2] ./run[0x402473]
+[motstand:08794] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f9e9c924c05]
+[motstand:08794] [ 4] ./run[0x4020b9]
+[motstand:08794] *** End of error message ***
+[motstand:08796] *** Process received signal ***
+[motstand:08796] Signal: Segmentation fault (11)
+[motstand:08796] Signal code: Address not mapped (1)
+[motstand:08796] Failing at address: 0x44000098
+[motstand:08796] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f4513c835e0]
+[motstand:08796] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f451470eac6]
+[motstand:08796] [ 2] ./run[0x402473]
+[motstand:08796] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f45138d2c05]
+[motstand:08796] [ 4] ./run[0x4020b9]
+[motstand:08796] *** End of error message ***
+[motstand:08798] *** Process received signal ***
+[motstand:08798] Signal: Segmentation fault (11)
+[motstand:08798] Signal code: Address not mapped (1)
+[motstand:08798] Failing at address: 0x44000098
+[motstand:08798] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7ffb743275e0]
+[motstand:08798] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7ffb74db2ac6]
+[motstand:08798] [ 2] ./run[0x402473]
+[motstand:08798] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7ffb73f76c05]
+[motstand:08798] [ 4] ./run[0x4020b9]
+[motstand:08798] *** End of error message ***
+[motstand:08787] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7fb581ac95e0]
+[motstand:08787] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7fb582554ac6]
+[motstand:08787] [ 2] ./run[0x402473]
+[motstand:08787] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7fb581718c05]
+[motstand:08787] [ 4] ./run[0x4020b9]
+[motstand:08787] *** End of error message ***
+[motstand:08800] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7fac5b8f05e0]
+[motstand:08800] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7fac5c37bac6]
+[motstand:08800] [ 2] ./run[0x402473]
+[motstand:08800] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7fac5b53fc05]
+[motstand:08800] [ 4] ./run[0x4020b9]
+[motstand:08800] *** End of error message ***
+[motstand:08788] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f6bff27b5e0]
+[motstand:08788] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f6bffd06ac6]
+[motstand:08788] [ 2] ./run[0x402473]
+[motstand:08788] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f6bfeecac05]
+[motstand:08788] [ 4] ./run[0x4020b9]
+[motstand:08788] *** End of error message ***
+[motstand:08792] *** Process received signal ***
+[motstand:08792] Signal: Segmentation fault (11)
+[motstand:08792] Signal code: Address not mapped (1)
+[motstand:08792] Failing at address: 0x44000098
+[motstand:08792] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f9bd36235e0]
+[motstand:08792] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f9bd40aeac6]
+[motstand:08792] [ 2] ./run[0x402473]
+[motstand:08792] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f9bd3272c05]
+[motstand:08792] [ 4] ./run[0x4020b9]
+[motstand:08792] *** End of error message ***
+--------------------------------------------------------------------------
+mpirun noticed that process rank 4 with PID 8794 on node motstand exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+[yishac@motstand Pro5Yisha]$ /usr/lib64/openmpi/bin/mpirun -np 4 ./run
+[motstand:08820] *** Process received signal ***
+[motstand:08820] Signal: Segmentation fault (11)
+[motstand:08820] Signal code: Address not mapped (1)
+[motstand:08820] Failing at address: 0x44000098
+[motstand:08823] *** Process received signal ***
+[motstand:08823] Signal: Segmentation fault (11)
+[motstand:08823] Signal code: Address not mapped (1)
+[motstand:08823] Failing at address: 0x44000098
+[motstand:08820] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f617068a5e0]
+[motstand:08820] [ 1] [motstand:08823] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f9e74c965e0]
+[motstand:08823] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f6171115ac6]
+[motstand:08820] [ 2] ./run[0x402473]
+[motstand:08820] [ 3] [motstand:08821] *** Process received signal ***
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7f61702d9c05]
+[motstand:08820] [ 4] ./run[0x4020b9]
+[motstand:08820] *** End of error message ***
+/usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f9e75721ac6]
+[motstand:08823] [ 2] ./run[0x402473]
+[motstand:08823] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f9e748e5c05]
+[motstand:08823] [ 4] ./run[0x4020b9]
+[motstand:08823] *** End of error message ***
+[motstand:08821] Signal: Segmentation fault (11)
+[motstand:08821] Signal code: Address not mapped (1)
+[motstand:08821] Failing at address: 0x44000098
+[motstand:08821] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f1b5520a5e0]
+[motstand:08821] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f1b55c95ac6]
+[motstand:08821] [ 2] ./run[0x402473]
+[motstand:08821] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f1b54e59c05]
+[motstand:08821] [ 4] ./run[0x4020b9]
+[motstand:08821] *** End of error message ***
+[motstand:08825] *** Process received signal ***
+[motstand:08825] Signal: Segmentation fault (11)
+[motstand:08825] Signal code: Address not mapped (1)
+[motstand:08825] Failing at address: 0x44000098
+[motstand:08825] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f256c5b75e0]
+[motstand:08825] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f256d042ac6]
+[motstand:08825] [ 2] ./run[0x402473]
+[motstand:08825] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f256c206c05]
+[motstand:08825] [ 4] ./run[0x4020b9]
+[motstand:08825] *** End of error message ***
+--------------------------------------------------------------------------
+mpirun noticed that process rank 3 with PID 8825 on node motstand exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+[yishac@motstand Pro5Yisha]$ /usr/lib64/openmpi/bin/mpirun -np 8 ./run SavingMCs 500 10000000 50000 0.05 0.25
+[motstand:08943] *** Process received signal ***
+[motstand:08951] *** Process received signal ***
+[motstand:08951] Signal: Segmentation fault (11)
+[motstand:08951] Signal code: Address not mapped (1)
+[motstand:08951] Failing at address: 0x44000098
+[motstand:08945] *** Process received signal ***
+[motstand:08945] Signal: Segmentation fault (11)
+[motstand:08945] Signal code: Address not mapped (1)
+[motstand:08945] Failing at address: 0x44000098
+[motstand:08940] *** Process received signal ***
+[motstand:08940] Signal: Segmentation fault (11)
+[motstand:08940] Signal code: Address not mapped (1)
+[motstand:08940] Failing at address: 0x44000098
+[motstand:08941] *** Process received signal ***
+[motstand:08941] Signal: Segmentation fault (11)
+[motstand:08941] Signal code: Address not mapped (1)
+[motstand:08941] Failing at address: 0x44000098
+[motstand:08949] *** Process received signal ***
+[motstand:08949] Signal: Segmentation fault (11)
+[motstand:08949] Signal code: Address not mapped (1)
+[motstand:08949] Failing at address: 0x44000098
+[motstand:08945] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7ffb7bcf35e0]
+[motstand:08945] [ 1] [motstand:08940] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7fabd474f5e0]
+[motstand:08940] [ 1] [motstand:08951] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f5d45dde5e0]
+[motstand:08951] [ 1] [motstand:08947] *** Process received signal ***
+[motstand:08947] Signal: Segmentation fault (11)
+[motstand:08947] Signal code: Address not mapped (1)
+[motstand:08947] Failing at address: 0x44000098
+[motstand:08941] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f3f06ace5e0]
+[motstand:08941] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7fabd51daac6]
+[motstand:08940] [ 2] ./run[0x402473]
+[motstand:08940] [ 3] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f5d46869ac6]
+[motstand:08951] [ 2] ./run[0x402473]
+[motstand:08951] [ 3] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f3f07559ac6]
+[motstand:08941] [ 2] ./run[0x402473]
+[motstand:08941] [ 3] [motstand:08949] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f9e030625e0]
+[motstand:08949] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7ffb7c77eac6]
+[motstand:08945] [ 2] ./run[0x402473]
+[motstand:08945] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f5d45a2dc05]
+[motstand:08951] [ 4] ./run[0x4020b9]
+[motstand:08951] *** End of error message ***
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7fabd439ec05]
+[motstand:08940] [ 4] ./run[0x4020b9]
+[motstand:08940] *** End of error message ***
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7ffb7b942c05]
+[motstand:08945] [ 4] ./run[0x4020b9]
+[motstand:08945] *** End of error message ***
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7f3f0671dc05]
+[motstand:08941] [ 4] ./run[0x4020b9]
+[motstand:08941] *** End of error message ***
+/usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f9e03aedac6]
+[motstand:08949] [ 2] ./run[0x402473]
+[motstand:08949] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f9e02cb1c05]
+[motstand:08949] [ 4] ./run[0x4020b9]
+[motstand:08949] *** End of error message ***
+[motstand:08947] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7fba093615e0]
+[motstand:08947] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7fba09decac6]
+[motstand:08947] [ 2] ./run[0x402473]
+[motstand:08947] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7fba08fb0c05]
+[motstand:08947] [ 4] ./run[0x4020b9]
+[motstand:08947] *** End of error message ***
+[motstand:08943] Signal: Segmentation fault (11)
+[motstand:08943] Signal code: Address not mapped (1)
+[motstand:08943] Failing at address: 0x44000098
+[motstand:08943] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f5441ca15e0]
+[motstand:08943] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f544272cac6]
+[motstand:08953] *** Process received signal ***
+[motstand:08953] Signal: Segmentation fault (11)
+[motstand:08953] Signal code: Address not mapped (1)
+[motstand:08953] Failing at address: 0x44000098
+[motstand:08953] [motstand:08943] [ 2] ./run[0x402473]
+[motstand:08943] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f54418f0c05]
+[motstand:08943] [ 4] ./run[0x4020b9]
+[motstand:08943] *** End of error message ***
+[ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f5efe33f5e0]
+[motstand:08953] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f5efedcaac6]
+[motstand:08953] [ 2] ./run[0x402473]
+[motstand:08953] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f5efdf8ec05]
+[motstand:08953] [ 4] ./run[0x4020b9]
+[motstand:08953] *** End of error message ***
+--------------------------------------------------------------------------
+mpirun noticed that process rank 3 with PID 8945 on node motstand exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+[yishac@motstand Pro5Yisha]$ /usr/lib64/openmpi/bin/mpic++ -std=c++11 -o3 main.cpp -o run
+[yishac@motstand Pro5Yisha]$ /usr/lib64/openmpi/bin/mpirun -np 8 ./run SavingMCs 500 10000000 50000 0.05 0.25
+[motstand:09087] *** Process received signal ***
+[motstand:09087] Signal: Segmentation fault (11)
+[motstand:09087] Signal code: Address not mapped (1)
+[motstand:09087] Failing at address: 0x44000098
+[motstand:09088] *** Process received signal ***
+[motstand:09088] Signal: Segmentation fault (11)
+[motstand:09088] Signal code: Address not mapped (1)
+[motstand:09088] Failing at address: 0x44000098
+[motstand:09092] *** Process received signal ***
+[motstand:09092] Signal: Segmentation fault (11)
+[motstand:09092] Signal code: Address not mapped (1)
+[motstand:09092] Failing at address: 0x44000098
+[motstand:09092] [ 0] [motstand:09088] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f0a5703d5e0]
+[motstand:09088] [ 1] [motstand:09094] *** Process received signal ***
+[motstand:09094] Signal: Segmentation fault (11)
+[motstand:09094] Signal code: Address not mapped (1)
+[motstand:09094] Failing at address: 0x44000098
+/lib64/libpthread.so.0(+0xf5e0)[0x7fb84cf175e0]
+[motstand:09092] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7fb84d9a2ac6]
+[motstand:09092] [ 2] ./run[0x402473]
+[motstand:09092] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7fb84cb66c05]
+[motstand:09092] [ 4] ./run[0x4020b9]
+[motstand:09092] *** End of error message ***
+[motstand:09090] *** Process received signal ***
+[motstand:09090] Signal: Segmentation fault (11)
+[motstand:09090] Signal code: Address not mapped (1)
+[motstand:09090] Failing at address: 0x44000098
+[motstand:09090] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7fe0bbf5a5e0]
+[motstand:09090] [ 1] [motstand:09094] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f0884b895e0]
+[motstand:09094] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f0885614ac6]
+[motstand:09094] [ 2] ./run[0x402473]
+[motstand:09094] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f08847d8c05]
+[motstand:09094] [ 4] ./run[0x4020b9]
+[motstand:09094] *** End of error message ***
+/usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f0a57ac8ac6]
+[motstand:09088] [ 2] ./run[0x402473]
+[motstand:09088] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f0a56c8cc05]
+[motstand:09088] [ 4] ./run[0x4020b9]
+[motstand:09088] *** End of error message ***
+[motstand:09096] *** Process received signal ***
+[motstand:09096] Signal: Segmentation fault (11)
+[motstand:09096] Signal code: Address not mapped (1)
+[motstand:09096] Failing at address: 0x44000098
+[motstand:09098] *** Process received signal ***
+[motstand:09098] Signal: Segmentation fault (11)
+[motstand:09098] Signal code: Address not mapped (1)
+[motstand:09098] Failing at address: 0x44000098
+/usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7fe0bc9e5ac6]
+[motstand:09090] [ 2] ./run[0x402473]
+[motstand:09090] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7fe0bbba9c05]
+[motstand:09090] [ 4] ./run[0x4020b9]
+[motstand:09090] *** End of error message ***
+[motstand:09096] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7fa089b645e0]
+[motstand:09096] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7fa08a5efac6]
+[motstand:09096] [ 2] ./run[0x402473]
+[motstand:09096] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7fa0897b3c05]
+[motstand:09096] [ 4] ./run[0x4020b9]
+[motstand:09096] *** End of error message ***
+[motstand:09098] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f4253f065e0]
+[motstand:09098] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f4254991ac6]
+[motstand:09098] [ 2] ./run[0x402473]
+[motstand:09098] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f4253b55c05]
+[motstand:09098] [ 4] ./run[0x4020b9]
+[motstand:09098] *** End of error message ***
+[motstand:09087] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f893b49c5e0]
+[motstand:09087] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f893bf27ac6]
+[motstand:09087] [ 2] ./run[0x402473]
+[motstand:09087] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f893b0ebc05]
+[motstand:09087] [ 4] ./run[0x4020b9]
+[motstand:09087] *** End of error message ***
+[motstand:09100] *** Process received signal ***
+[motstand:09100] Signal: Segmentation fault (11)
+[motstand:09100] Signal code: Address not mapped (1)
+[motstand:09100] Failing at address: 0x44000098
+[motstand:09100] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f94c95675e0]
+[motstand:09100] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f94c9ff2ac6]
+[motstand:09100] [ 2] ./run[0x402473]
+[motstand:09100] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f94c91b6c05]
+[motstand:09100] [ 4] ./run[0x4020b9]
+[motstand:09100] *** End of error message ***
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 9087 on node motstand exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+4 total processes killed (some possibly by mpirun during cleanup)
+[yishac@motstand Pro5Yisha]$ /usr/lib64/openmpi/bin/mpirun -np 8 run SavingMCs 500 10000000 50000 0.05 0.25
+[motstand:09119] *** Process received signal ***
+[motstand:09119] Signal: Segmentation fault (11)
+[motstand:09119] Signal code: Address not mapped (1)
+[motstand:09119] Failing at address: 0x44000098
+[motstand:09119] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f5d46c8f5e0]
+[motstand:09119] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f5d4771aac6]
+[motstand:09119] [ 2] run[0x402473]
+[motstand:09119] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f5d468dec05]
+[motstand:09119] [ 4] run[0x4020b9]
+[motstand:09119] *** End of error message ***
+[motstand:09122] *** Process received signal ***
+[motstand:09122] Signal: Segmentation fault (11)
+[motstand:09122] Signal code: Address not mapped (1)
+[motstand:09122] Failing at address: 0x44000098
+[motstand:09122] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7fd7dd0d75e0]
+[motstand:09122] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7fd7ddb62ac6]
+[motstand:09122] [ 2] run[0x402473]
+[motstand:09122] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7fd7dcd26c05]
+[motstand:09122] [ 4] run[0x4020b9]
+[motstand:09122] *** End of error message ***
+[motstand:09124] *** Process received signal ***
+[motstand:09124] Signal: Segmentation fault (11)
+[motstand:09124] Signal code: Address not mapped (1)
+[motstand:09124] Failing at address: 0x44000098
+[motstand:09124] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7fbe8fccc5e0]
+[motstand:09124] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7fbe90757ac6]
+[motstand:09124] [ 2] run[0x402473]
+[motstand:09124] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7fbe8f91bc05]
+[motstand:09124] [ 4] run[0x4020b9]
+[motstand:09124] *** End of error message ***
+[motstand:09126] *** Process received signal ***
+[motstand:09126] Signal: Segmentation fault (11)
+[motstand:09126] Signal code: Address not mapped (1)
+[motstand:09126] Failing at address: 0x44000098
+[motstand:09126] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f2b0d0815e0]
+[motstand:09126] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f2b0db0cac6]
+[motstand:09126] [ 2] run[0x402473]
+[motstand:09126] [ 3] [motstand:09128] *** Process received signal ***
+[motstand:09128] Signal: Segmentation fault (11)
+[motstand:09128] Signal code: Address not mapped (1)
+[motstand:09128] Failing at address: 0x44000098
+[motstand:09128] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7fc2f54015e0]
+[motstand:09128] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7fc2f5e8cac6]
+[motstand:09128] [ 2] run[0x402473]
+[motstand:09128] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7fc2f5050c05]
+[motstand:09128] [ 4] run[0x4020b9]
+[motstand:09128] *** End of error message ***
+[motstand:09132] *** Process received signal ***
+[motstand:09132] Signal: Segmentation fault (11)
+[motstand:09132] Signal code: Address not mapped (1)
+[motstand:09132] Failing at address: 0x44000098
+[motstand:09120] *** Process received signal ***
+[motstand:09120] Signal: Segmentation fault (11)
+[motstand:09120] Signal code: Address not mapped (1)
+[motstand:09120] Failing at address: 0x44000098
+[motstand:09120] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f4abb6315e0]
+[motstand:09120] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f4abc0bcac6]
+[motstand:09120] [ 2] run[0x402473]
+[motstand:09120] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f4abb280c05]
+[motstand:09120] [ 4] run[0x4020b9]
+[motstand:09120] *** End of error message ***
+[motstand:09132] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f19f284b5e0]
+[motstand:09132] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f19f32d6ac6]
+[motstand:09132] [ 2] run[0x402473]
+[motstand:09132] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f19f249ac05]
+[motstand:09132] [ 4] run[0x4020b9]
+[motstand:09132] *** End of error message ***
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7f2b0ccd0c05]
+[motstand:09126] [ 4] run[0x4020b9]
+[motstand:09126] *** End of error message ***
+[motstand:09130] *** Process received signal ***
+[motstand:09130] Signal: Segmentation fault (11)
+[motstand:09130] Signal code: Address not mapped (1)
+[motstand:09130] Failing at address: 0x44000098
+[motstand:09130] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7fb36bbfe5e0]
+[motstand:09130] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7fb36c689ac6]
+[motstand:09130] [ 2] run[0x402473]
+[motstand:09130] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7fb36b84dc05]
+[motstand:09130] [ 4] run[0x4020b9]
+[motstand:09130] *** End of error message ***
+--------------------------------------------------------------------------
+mpirun noticed that process rank 1 with PID 9120 on node motstand exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+[yishac@motstand Pro5Yisha]$ /usr/lib64/openmpi/bin/mpirun -np 8 ./run SavingMCs 500 10000000 50000 0.05 0.25
+[motstand:09582] *** Process received signal ***
+[motstand:09582] Signal: Segmentation fault (11)
+[motstand:09582] Signal code: Address not mapped (1)
+[motstand:09582] Failing at address: 0x44000098
+[motstand:09584] *** Process received signal ***
+[motstand:09584] Signal: Segmentation fault (11)
+[motstand:09584] Signal code: Address not mapped (1)
+[motstand:09584] Failing at address: 0x44000098
+[motstand:09584] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7ffa714435e0]
+[motstand:09584] [ 1] [motstand:09573] *** Process received signal ***
+[motstand:09573] Signal: Segmentation fault (11)
+[motstand:09573] Signal code: Address not mapped (1)
+[motstand:09573] Failing at address: 0x44000098
+[motstand:09574] *** Process received signal ***
+[motstand:09574] Signal: Segmentation fault (11)
+[motstand:09574] Signal code: Address not mapped (1)
+[motstand:09574] Failing at address: 0x44000098
+[motstand:09574] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f07444d25e0]
+[motstand:09574] [ 1] [motstand:09576] *** Process received signal ***
+[motstand:09576] Signal: Segmentation fault (11)
+[motstand:09576] Signal code: Address not mapped (1)
+[motstand:09576] Failing at address: 0x44000098
+[motstand:09576] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f74b8f1d5e0]
+[motstand:09576] [ 1] [motstand:09578] *** Process received signal ***
+[motstand:09578] Signal: Segmentation fault (11)
+[motstand:09578] Signal code: Address not mapped (1)
+[motstand:09578] Failing at address: 0x44000098
+[motstand:09578] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f5e574065e0]
+[motstand:09578] [ 1] [motstand:09580] *** Process received signal ***
+[motstand:09580] Signal: Segmentation fault (11)
+[motstand:09580] Signal code: Address not mapped (1)
+[motstand:09580] Failing at address: 0x44000098
+[motstand:09580] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f5f057b35e0]
+[motstand:09580] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7ffa71eceac6]
+[motstand:09584] [ 2] ./run[0x402473]
+[motstand:09584] [ 3] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f0744f5dac6]
+[motstand:09574] [ 2] ./run[0x402473]
+[motstand:09574] [ 3] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f74b99a8ac6]
+[motstand:09576] [ 2] ./run[0x402473]
+[motstand:09576] [ 3] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f5e57e91ac6]
+[motstand:09578] [ 2] ./run[0x402473]
+[motstand:09578] [ 3] [motstand:09582] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7fdf10eb25e0]
+[motstand:09582] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7fdf1193dac6]
+[motstand:09582] [ 2] ./run[0x402473]
+[motstand:09582] [ 3] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f5f0623eac6]
+[motstand:09580] [ 2] ./run[0x402473]
+[motstand:09580] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f5f05402c05]
+[motstand:09580] [ 4] ./run[0x4020b9]
+[motstand:09580] *** End of error message ***
+[motstand:09586] *** Process received signal ***
+[motstand:09586] Signal: Segmentation fault (11)
+[motstand:09586] Signal code: Address not mapped (1)
+[motstand:09586] Failing at address: 0x44000098
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7fdf10b01c05]
+[motstand:09582] [ 4] ./run[0x4020b9]
+[motstand:09582] *** End of error message ***
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7ffa71092c05]
+[motstand:09584] [ 4] ./run[0x4020b9]
+[motstand:09584] *** End of error message ***
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7f0744121c05]
+[motstand:09574] [ 4] ./run[0x4020b9]
+[motstand:09574] *** End of error message ***
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7f74b8b6cc05]
+[motstand:09576] [ 4] ./run[0x4020b9]
+[motstand:09576] *** End of error message ***
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7f5e57055c05]
+[motstand:09578] [ 4] ./run[0x4020b9]
+[motstand:09578] *** End of error message ***
+[motstand:09586] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f9f2a9535e0]
+[motstand:09586] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f9f2b3deac6]
+[motstand:09586] [ 2] ./run[0x402473]
+[motstand:09586] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f9f2a5a2c05]
+[motstand:09586] [ 4] ./run[0x4020b9]
+[motstand:09586] *** End of error message ***
+[motstand:09573] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f26dfa675e0]
+[motstand:09573] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f26e04f2ac6]
+[motstand:09573] [ 2] ./run[0x402473]
+[motstand:09573] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f26df6b6c05]
+[motstand:09573] [ 4] ./run[0x4020b9]
+[motstand:09573] *** End of error message ***
+--------------------------------------------------------------------------
+mpirun noticed that process rank 1 with PID 9574 on node motstand exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+[yishac@motstand Pro5Yisha]$ /usr/lib64/openmpi/bin/mpic++ -std=c++11 -o3 main.cpp -o run
+[yishac@motstand Pro5Yisha]$ /usr/lib64/openmpi/bin/mpirun -np 8 ./run SavingMCs 500 10000000 50000 0.05 0.25
+[motstand:09725] *** Process received signal ***
+[motstand:09726] *** Process received signal ***
+[motstand:09726] Signal: Segmentation fault (11)
+[motstand:09726] Signal code: Address not mapped (1)
+[motstand:09726] Failing at address: 0x44000098
+[motstand:09730] *** Process received signal ***
+[motstand:09730] Signal: Segmentation fault (11)
+[motstand:09730] Signal code: Address not mapped (1)
+[motstand:09730] Failing at address: 0x44000098
+[motstand:09728] *** Process received signal ***
+[motstand:09728] Signal: Segmentation fault (11)
+[motstand:09728] Signal code: Address not mapped (1)
+[motstand:09728] Failing at address: 0x44000098
+[motstand:09730] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f0f4b1dd5e0]
+[motstand:09730] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f0f4bc68ac6]
+[motstand:09730] [ 2] ./run[0x402473]
+[motstand:09730] [ 3] [motstand:09726] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f67442725e0]
+[motstand:09726] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f6744cfdac6]
+[motstand:09726] [ 2] ./run[0x402473]
+[motstand:09726] [ 3] [motstand:09728] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7efe75ad95e0]
+[motstand:09728] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7efe76564ac6]
+[motstand:09728] [ 2] ./run[0x402473]
+[motstand:09728] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7efe75728c05]
+[motstand:09728] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f6743ec1c05]
+[motstand:09726] [ 4] ./run[0x4020b9]
+[motstand:09726] *** End of error message ***
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7f0f4ae2cc05]
+[motstand:09730] [ 4] ./run[0x4020b9]
+[motstand:09730] *** End of error message ***
+[ 4] ./run[0x4020b9]
+[motstand:09728] *** End of error message ***
+[motstand:09738] *** Process received signal ***
+[motstand:09738] Signal: Segmentation fault (11)
+[motstand:09738] Signal code: Address not mapped (1)
+[motstand:09738] Failing at address: 0x44000098
+[motstand:09738] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f5578d9b5e0]
+[motstand:09738] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f5579826ac6]
+[motstand:09738] [ 2] ./run[0x402473]
+[motstand:09738] [ 3] [motstand:09732] *** Process received signal ***
+[motstand:09732] Signal: Segmentation fault (11)
+[motstand:09732] Signal code: Address not mapped (1)
+[motstand:09732] Failing at address: 0x44000098
+[motstand:09734] *** Process received signal ***
+[motstand:09734] Signal: Segmentation fault (11)
+[motstand:09734] Signal code: Address not mapped (1)
+[motstand:09734] Failing at address: 0x44000098
+[motstand:09734] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f35e16165e0]
+[motstand:09734] [ 1] [motstand:09736] *** Process received signal ***
+[motstand:09736] Signal: Segmentation fault (11)
+[motstand:09736] Signal code: Address not mapped (1)
+[motstand:09736] Failing at address: 0x44000098
+[motstand:09736] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f18a95c25e0]
+[motstand:09736] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f18aa04dac6]
+[motstand:09736] [ 2] ./run[0x402473]
+[motstand:09736] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f18a9211c05]
+[motstand:09736] [ 4] ./run[0x4020b9]
+[motstand:09736] *** End of error message ***
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7f55789eac05]
+[motstand:09738] [ 4] ./run[0x4020b9]
+[motstand:09738] *** End of error message ***
+/usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f35e20a1ac6]
+[motstand:09734] [ 2] ./run[0x402473]
+[motstand:09734] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f35e1265c05]
+[motstand:09734] [ 4] ./run[0x4020b9]
+[motstand:09734] *** End of error message ***
+[motstand:09732] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f1c45ee05e0]
+[motstand:09732] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f1c4696bac6]
+[motstand:09732] [ 2] ./run[0x402473]
+[motstand:09732] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f1c45b2fc05]
+[motstand:09732] [ 4] ./run[0x4020b9]
+[motstand:09732] *** End of error message ***
+[motstand:09725] Signal: Segmentation fault (11)
+[motstand:09725] Signal code: Address not mapped (1)
+[motstand:09725] Failing at address: 0x44000098
+[motstand:09725] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7fe655c105e0]
+[motstand:09725] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7fe65669bac6]
+[motstand:09725] [ 2] ./run[0x402473]
+[motstand:09725] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7fe65585fc05]
+[motstand:09725] [ 4] ./run[0x4020b9]
+[motstand:09725] *** End of error message ***
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 9725 on node motstand exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+[yishac@motstand Pro5Yisha]$ /usr/lib64/openmpi/bin/mpic++ -std=c++11 -o3 main.c[yishac@motstand Pro5Yisha]$ /usr/lib64/openmpi/bin/mpic++ -std=c++11 -o3 Project5finance.cpp -o run
+[yishac@motstand Pro5Yisha]$ /usr/lib64/openmpi/bin/mpirun -np 8 ./run SavingMCs 500 10000000 50000 0.05 0.25
+[motstand:11874] *** Process received signal ***
+[motstand:11866] *** Process received signal ***
+[motstand:11866] Signal: Segmentation fault (11)
+[motstand:11866] Signal code: Address not mapped (1)
+[motstand:11866] Failing at address: 0x44000098
+[motstand:11868] *** Process received signal ***
+[motstand:11868] Signal: Segmentation fault (11)
+[motstand:11868] Signal code: Address not mapped (1)
+[motstand:11868] Failing at address: 0x44000098
+[motstand:11866] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7fa3d33325e0]
+[motstand:11866] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7fa3d3dbdac6]
+[motstand:11866] [motstand:11868] [ 0] [motstand:11870] *** Process received signal ***
+[motstand:11870] Signal: Segmentation fault (11)
+[motstand:11870] Signal code: Address not mapped (1)
+[motstand:11870] Failing at address: 0x44000098
+[ 2] ./run[0x401faa]
+[motstand:11866] [ 3] /lib64/libpthread.so.0(+0xf5e0)[0x7fe9b1b3d5e0]
+[motstand:11868] [ 1] [motstand:11872] *** Process received signal ***
+[motstand:11872] Signal: Segmentation fault (11)
+[motstand:11872] Signal code: Address not mapped (1)
+[motstand:11872] Failing at address: 0x44000098
+[motstand:11870] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7fcc2ffc25e0]
+[motstand:11870] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7fcc30a4dac6]
+[motstand:11870] [ 2] ./run[0x401faa]
+[motstand:11870] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7fcc2fc11c05]
+[motstand:11870] [ 4] ./run[0x401e89]
+[motstand:11870] *** End of error message ***
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7fa3d2f81c05]
+[motstand:11866] [ 4] ./run[0x401e89]
+[motstand:11866] *** End of error message ***
+/usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7fe9b25c8ac6]
+[motstand:11868] [ 2] ./run[0x401faa]
+[motstand:11868] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7fe9b178cc05]
+[motstand:11868] [ 4] ./run[0x401e89]
+[motstand:11868] *** End of error message ***
+[motstand:11876] *** Process received signal ***
+[motstand:11876] Signal: Segmentation fault (11)
+[motstand:11876] Signal code: Address not mapped (1)
+[motstand:11876] Failing at address: 0x44000098
+[motstand:11872] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7fca46f445e0]
+[motstand:11872] [ 1] [motstand:11878] *** Process received signal ***
+[motstand:11878] Signal: Segmentation fault (11)
+[motstand:11878] Signal code: Address not mapped (1)
+[motstand:11878] Failing at address: 0x44000098
+[motstand:11878] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7ff509c1e5e0]
+[motstand:11878] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7ff50a6a9ac6]
+[motstand:11878] [ 2] ./run[0x401faa]
+[motstand:11878] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7ff50986dc05]
+[motstand:11878] [ 4] ./run[0x401e89]
+[motstand:11878] *** End of error message ***
+/usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7fca479cfac6]
+[motstand:11872] [ 2] ./run[0x401faa]
+[motstand:11872] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7fca46b93c05]
+[motstand:11872] [ 4] ./run[0x401e89]
+[motstand:11872] *** End of error message ***
+[motstand:11876] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f178c9795e0]
+[motstand:11876] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f178d404ac6]
+[motstand:11876] [ 2] ./run[0x401faa]
+[motstand:11876] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f178c5c8c05]
+[motstand:11876] [ 4] ./run[0x401e89]
+[motstand:11876] *** End of error message ***
+[motstand:11874] Signal: Segmentation fault (11)
+[motstand:11874] Signal code: Address not mapped (1)
+[motstand:11874] Failing at address: 0x44000098
+[motstand:11874] [ 0] [motstand:11865] *** Process received signal ***
+[motstand:11865] Signal: Segmentation fault (11)
+[motstand:11865] Signal code: Address not mapped (1)
+[motstand:11865] Failing at address: 0x44000098
+/lib64/libpthread.so.0(+0xf5e0)[0x7fac963fe5e0]
+[motstand:11874] [motstand:11865] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f58e26f45e0]
+[motstand:11865] [ 1] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f58e317fac6]
+[motstand:11865] [ 2] ./run[0x401faa]
+[motstand:11865] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f58e2343c05]
+/usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7fac96e89ac6]
+[motstand:11874] [ 2] ./run[0x401faa]
+[motstand:11874] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7fac9604dc05]
+[motstand:11874] [ 4] ./run[0x401e89]
+[motstand:11874] *** End of error message ***
+[motstand:11865] [ 4] ./run[0x401e89]
+[motstand:11865] *** End of error message ***
+--------------------------------------------------------------------------
+mpirun noticed that process rank 4 with PID 11872 on node motstand exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+[yishac@motstand Pro5Yisha]$ /usr/lib64/openmpi/bin/mpic++ -std=c++11 -o3 main.cpp -o run
+[yishac@motstand Pro5Yisha]$ /usr/lib64/openmpi/bin/mpirun -np 8 ./run SavingMCs 500 10000000 50000 0.05 0.25
+[motstand:12071] *** Process received signal ***
+[motstand:12071] Signal: Segmentation fault (11)
+[motstand:12071] Signal code: Address not mapped (1)
+[motstand:12071] Failing at address: 0x44000098
+[motstand:12072] *** Process received signal ***
+[motstand:12072] Signal: Segmentation fault (11)
+[motstand:12072] Signal code: Address not mapped (1)
+[motstand:12072] Failing at address: 0x44000098
+[motstand:12074] *** Process received signal ***
+[motstand:12078] *** Process received signal ***
+[motstand:12078] Signal: Segmentation fault (11)
+[motstand:12078] Signal code: Address not mapped (1)
+[motstand:12078] Failing at address: 0x44000098
+[motstand:12080] *** Process received signal ***
+[motstand:12080] Signal: Segmentation fault (11)
+[motstand:12080] Signal code: Address not mapped (1)
+[motstand:12080] Failing at address: 0x44000098
+[motstand:12072] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7fb2cf8145e0]
+[motstand:12072] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7fb2d029fac6]
+[motstand:12072] [ 2] ./run[0x402473]
+[motstand:12072] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7fb2cf463c05]
+[motstand:12072] [ 4] ./run[0x4020b9]
+[motstand:12072] *** End of error message ***
+[motstand:12076] *** Process received signal ***
+[motstand:12076] Signal: Segmentation fault (11)
+[motstand:12076] Signal code: Address not mapped (1)
+[motstand:12076] Failing at address: 0x44000098
+[motstand:12076] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f88ae3945e0]
+[motstand:12076] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f88aee1fac6]
+[motstand:12076] [ 2] ./run[0x402473]
+[motstand:12076] [ 3] [motstand:12078] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f2c0c8305e0]
+[motstand:12078] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f2c0d2bbac6]
+[motstand:12078] [ 2] ./run[0x402473]
+[motstand:12078] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f2c0c47fc05]
+[motstand:12078] [ 4] ./run[0x4020b9]
+[motstand:12078] *** End of error message ***
+[motstand:12082] *** Process received signal ***
+[motstand:12082] Signal: Segmentation fault (11)
+[motstand:12082] Signal code: Address not mapped (1)
+[motstand:12082] Failing at address: 0x44000098
+[motstand:12084] *** Process received signal ***
+[motstand:12084] Signal: Segmentation fault (11)
+[motstand:12084] Signal code: Address not mapped (1)
+[motstand:12084] Failing at address: 0x44000098
+[motstand:12084] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f23cee735e0]
+[motstand:12084] [ 1] [motstand:12080] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7fa2310965e0]
+[motstand:12080] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7fa231b21ac6]
+[motstand:12080] [ 2] ./run[0x402473]
+[motstand:12080] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7fa230ce5c05]
+[motstand:12080] [ 4] ./run[0x4020b9]
+[motstand:12080] *** End of error message ***
+[motstand:12082] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f67e07425e0]
+[motstand:12082] [motstand:12071] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f091be145e0]
+[motstand:12071] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f091c89fac6]
+[motstand:12071] [ 2] ./run[0x402473]
+[motstand:12071] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f091ba63c05]
+[motstand:12071] [ 4] ./run[0x4020b9]
+[motstand:12071] *** End of error message ***
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7f88adfe3c05]
+[motstand:12076] [ 4] ./run[0x4020b9]
+[motstand:12076] *** End of error message ***
+[ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f23cf8feac6]
+[motstand:12084] [ 2] ./run[0x402473]
+[motstand:12084] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f23ceac2c05]
+[motstand:12084] [ 4] ./run[0x4020b9]
+[motstand:12084] *** End of error message ***
+[motstand:12074] Signal: Segmentation fault (11)
+[motstand:12074] Signal code: Address not mapped (1)
+[motstand:12074] Failing at address: 0x44000098
+[motstand:12074] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f67e11cdac6]
+[motstand:12082] [ 2] ./run[0x402473]
+[motstand:12082] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f67e0391c05]
+[motstand:12082] [ 4] ./run[0x4020b9]
+[motstand:12082] *** End of error message ***
+[ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7fc2adbae5e0]
+[motstand:12074] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7fc2ae639ac6]
+[motstand:12074] [ 2] ./run[0x402473]
+[motstand:12074] [ 3] --------------------------------------------------------------------------
+mpirun noticed that process rank 7 with PID 12084 on node motstand exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+[yishac@motstand Pro5Yisha]$ /usr/lib64/openmpi/bin/mpic++ -std=c++11 -o3 Project5finance.cpp -o run
+[yishac@motstand Pro5Yisha]$ /usr/lib64/openmpi/bin/mpirun -np 8 ./run SavingMCs 500 10000000 50000 0.05 0.25
+[motstand:17532] *** Process received signal ***
+[motstand:17532] Signal: Segmentation fault (11)
+[motstand:17532] Signal code: Address not mapped (1)
+[motstand:17532] Failing at address: 0x44000098
+[motstand:17536] *** Process received signal ***
+[motstand:17538] *** Process received signal ***
+[motstand:17538] Signal: Segmentation fault (11)
+[motstand:17538] Signal code: Address not mapped (1)
+[motstand:17538] Failing at address: 0x44000098
+[motstand:17542] *** Process received signal ***
+[motstand:17542] Signal: Segmentation fault (11)
+[motstand:17542] Signal code: Address not mapped (1)
+[motstand:17542] Failing at address: 0x44000098
+[motstand:17532] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f760d7435e0]
+[motstand:17532] [motstand:17538] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7eff8a3585e0]
+[motstand:17538] [ 1] [ 1] [motstand:17529] *** Process received signal ***
+[motstand:17529] Signal: Segmentation fault (11)
+[motstand:17529] Signal code: Address not mapped (1)
+[motstand:17529] Failing at address: 0x44000098
+[motstand:17535] *** Process received signal ***
+[motstand:17535] Signal: Segmentation fault (11)
+[motstand:17535] Signal code: Address not mapped (1)
+[motstand:17535] Failing at address: 0x44000098
+[motstand:17542] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f5b2ed925e0]
+[motstand:17542] [ 1] [motstand:17540] *** Process received signal ***
+[motstand:17540] Signal: Segmentation fault (11)
+[motstand:17540] Signal code: Address not mapped (1)
+[motstand:17540] Failing at address: 0x44000098
+/usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7eff8ade3ac6]
+[motstand:17538] [ 2] ./run[0x401faa]
+[motstand:17538] [ 3] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f760e1ceac6]
+[motstand:17532] [ 2] ./run[0x401faa]
+[motstand:17532] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f760d392c05]
+[motstand:17532] [ 4] ./run[0x401e89]
+/usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f5b2f81dac6]
+[motstand:17542] [ 2] ./run[0x401faa]
+[motstand:17542] [ 3] [motstand:17532] *** End of error message ***
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7eff89fa7c05]
+[motstand:17538] [ 4] ./run[0x401e89]
+[motstand:17538] *** End of error message ***
+[motstand:17530] *** Process received signal ***
+[motstand:17530] Signal: Segmentation fault (11)
+[motstand:17530] Signal code: Address not mapped (1)
+[motstand:17530] Failing at address: 0x44000098
+[motstand:17529] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7ff021f935e0]
+[motstand:17529] [ 1] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f5b2e9e1c05]
+[motstand:17542] [ 4] ./run[0x401e89]
+[motstand:17542] *** End of error message ***
+[motstand:17540] [ 0] [motstand:17535] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f8db074b5e0]
+[motstand:17535] [ 1] [motstand:17530] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7ff1ceeec5e0]
+[motstand:17530] [ 1] /lib64/libpthread.so.0(+0xf5e0)[0x7f22cd5785e0]
+[motstand:17540] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f22ce003ac6]
+[motstand:17540] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7ff022a1eac6]
+[motstand:17529] [ 2] ./run[0x401faa]
+[motstand:17529] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7ff021be2c05]
+[motstand:17529] [ 4] ./run[0x401e89]
+[motstand:17529] *** End of error message ***
+/usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f8db11d6ac6]
+[motstand:17535] [ 2] ./run[0x401faa]
+[motstand:17540] [ 3] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7ff1cf977ac6]
+[motstand:17530] [ 2] ./run[0x401faa]
+[motstand:17530] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f22cd1c7c05]
+[motstand:17540] [ 4] ./run[0x401e89]
+[motstand:17540] *** End of error message ***
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7ff1ceb3bc05]
+[motstand:17530] [ 4] ./run[0x401e89]
+[motstand:17530] *** End of error message ***
+[motstand:17536] Signal: Segmentation fault (11)
+[motstand:17536] Signal code: Address not mapped (1)
+[motstand:17536] Failing at address: 0x44000098
+[motstand:17536] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7efd0e0fc5e0]
+[motstand:17536] [ 1] [ 2] ./run[0x401faa]
+[motstand:17535] [ 3] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7efd0eb87ac6]
+[motstand:17536] [ 2] ./run[0x401faa]
+[motstand:17536] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f8db039ac05]
+[motstand:17535] [ 4] ./run[0x401e89]
+[motstand:17535] *** End of error message ***
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7efd0dd4bc05]
+[motstand:17536] [ 4] ./run[0x401e89]
+[motstand:17536] *** End of error message ***
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 17529 on node motstand exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+[yishac@motstand Pro5Yisha]$ /usr/lib64/openmpi/bin/mpic++ -std=c++11 -o3 Project5finance.cpp -o run
+[yishac@motstand Pro5Yisha]$ /usr/lib64/openmpi/bin/mpirun -np 8 ./run SavingMCs 500 10000000 50000 0.05 0.25
+[motstand:17717] *** Process received signal ***
+[motstand:17717] Signal: Segmentation fault (11)
+[motstand:17717] Signal code: Address not mapped (1)
+[motstand:17717] Failing at address: 0x44000098
+[motstand:17712] *** Process received signal ***
+[motstand:17712] Signal: Segmentation fault (11)
+[motstand:17712] Signal code: Address not mapped (1)
+[motstand:17712] Failing at address: 0x44000098
+[motstand:17713] *** Process received signal ***
+[motstand:17713] Signal: Segmentation fault (11)
+[motstand:17713] Signal code: Address not mapped (1)
+[motstand:17713] Failing at address: 0x44000098
+[motstand:17713] [ 0] [motstand:17719] *** Process received signal ***
+[motstand:17719] Signal: Segmentation fault (11)
+[motstand:17719] Signal code: Address not mapped (1)
+[motstand:17719] Failing at address: 0x44000098
+[motstand:17717] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f42218f25e0]
+[motstand:17717] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f422237dac6]
+[motstand:17717] [ 2] ./run[0x401faa]
+[motstand:17717] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f4221541c05]
+[motstand:17717] [ 4] ./run[0x401e89]
+[motstand:17717] *** End of error message ***
+[motstand:17715] *** Process received signal ***
+/lib64/libpthread.so.0(+0xf5e0)[0x7f5c93bc85e0]
+[motstand:17713] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f5c94653ac6]
+[motstand:17713] [ 2] ./run[0x401faa]
+[motstand:17713] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f5c93817c05]
+[motstand:17713] [ 4] ./run[0x401e89]
+[motstand:17713] *** End of error message ***
+[motstand:17721] *** Process received signal ***
+[motstand:17721] Signal: Segmentation fault (11)
+[motstand:17721] Signal code: Address not mapped (1)
+[motstand:17721] Failing at address: 0x44000098
+[motstand:17721] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7fdddf9ba5e0]
+[motstand:17721] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7fdde0445ac6]
+[motstand:17721] [ 2] ./run[0x401faa]
+[motstand:17721] [ 3] [motstand:17723] *** Process received signal ***
+[motstand:17723] Signal: Segmentation fault (11)
+[motstand:17723] Signal code: Address not mapped (1)
+[motstand:17723] Failing at address: 0x44000098
+[motstand:17725] *** Process received signal ***
+[motstand:17725] Signal: Segmentation fault (11)
+[motstand:17725] Signal code: Address not mapped (1)
+[motstand:17725] Failing at address: 0x44000098
+[motstand:17725] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7fe31ae205e0]
+[motstand:17725] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7fe31b8abac6]
+[motstand:17725] [motstand:17719] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f552b1075e0]
+[motstand:17719] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f552bb92ac6]
+[motstand:17719] [ 2] ./run[0x401faa]
+[motstand:17719] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f552ad56c05]
+[motstand:17719] [ 4] ./run[0x401e89]
+[motstand:17719] *** End of error message ***
+[ 2] ./run[0x401faa]
+[motstand:17725] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7fe31aa6fc05]
+[motstand:17725] [ 4] ./run[0x401e89]
+[motstand:17725] *** End of error message ***
+[motstand:17715] Signal: Segmentation fault (11)
+[motstand:17715] Signal code: Address not mapped (1)
+[motstand:17715] Failing at address: 0x44000098
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7fdddf609c05]
+[motstand:17721] [ 4] ./run[0x401e89]
+[motstand:17721] *** End of error message ***
+[motstand:17723] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7fdb2e6e35e0]
+[motstand:17723] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7fdb2f16eac6]
+[motstand:17723] [ 2] ./run[0x401faa]
+[motstand:17723] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7fdb2e332c05]
+[motstand:17723] [ 4] ./run[0x401e89]
+[motstand:17723] *** End of error message ***
+[motstand:17712] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7fe7409545e0]
+[motstand:17712] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7fe7413dfac6]
+[motstand:17712] [ 2] ./run[0x401faa]
+[motstand:17712] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7fe7405a3c05]
+[motstand:17712] [ 4] ./run[0x401e89]
+[motstand:17712] *** End of error message ***
+[motstand:17715] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f9d1ddf25e0]
+[motstand:17715] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f9d1e87dac6]
+[motstand:17715] [ 2] ./run[0x401faa]
+[motstand:17715] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f9d1da41c05]
+[motstand:17715] [ 4] ./run[0x401e89]
+[motstand:17715] *** End of error message ***
+--------------------------------------------------------------------------
+mpirun noticed that process rank 4 with PID 17719 on node motstand exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+[yishac@motstand Pro5Yisha]$ /usr/lib64/openmpi/bin/mpirun -np 8 ./run SavingMCs 500 10000000 50000 0.05 0.25 0 -d 2.0
+[motstand:17821] *** Process received signal ***
+[motstand:17821] Signal: Segmentation fault (11)
+[motstand:17821] Signal code: Address not mapped (1)
+[motstand:17821] Failing at address: 0x44000098
+[motstand:17821] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f74deac95e0]
+[motstand:17821] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f74df554ac6]
+[motstand:17821] [ 2] ./run[0x401faa]
+[motstand:17821] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f74de718c05]
+[motstand:17821] [ 4] ./run[0x401e89]
+[motstand:17821] *** End of error message ***
+[motstand:17822] *** Process received signal ***
+[motstand:17822] Signal: Segmentation fault (11)
+[motstand:17822] Signal code: Address not mapped (1)
+[motstand:17822] Failing at address: 0x44000098
+[motstand:17822] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f2fe17935e0]
+[motstand:17822] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f2fe221eac6]
+[motstand:17822] [ 2] ./run[0x401faa]
+[motstand:17822] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f2fe13e2c05]
+[motstand:17822] [ 4] ./run[0x401e89]
+[motstand:17822] *** End of error message ***
+[motstand:17824] *** Process received signal ***
+[motstand:17824] Signal: Segmentation fault (11)
+[motstand:17824] Signal code: Address not mapped (1)
+[motstand:17824] Failing at address: 0x44000098
+[motstand:17824] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f3bffa385e0]
+[motstand:17824] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f3c004c3ac6]
+[motstand:17824] [ 2] ./run[0x401faa]
+[motstand:17824] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f3bff687c05]
+[motstand:17824] [ 4] ./run[0x401e89]
+[motstand:17824] *** End of error message ***
+[motstand:17827] *** Process received signal ***
+[motstand:17827] Signal: Segmentation fault (11)
+[motstand:17827] Signal code: Address not mapped (1)
+[motstand:17827] Failing at address: 0x44000098
+[motstand:17827] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f6d7f34e5e0]
+[motstand:17827] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f6d7fdd9ac6]
+[motstand:17827] [ 2] ./run[0x401faa]
+[motstand:17827] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f6d7ef9dc05]
+[motstand:17827] [ 4] ./run[0x401e89]
+[motstand:17827] *** End of error message ***
+[motstand:17828] *** Process received signal ***
+[motstand:17828] Signal: Segmentation fault (11)
+[motstand:17828] Signal code: Address not mapped (1)
+[motstand:17828] Failing at address: 0x44000098
+[motstand:17828] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f957275e5e0]
+[motstand:17828] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f95731e9ac6]
+[motstand:17828] [ 2] ./run[0x401faa]
+[motstand:17828] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f95723adc05]
+[motstand:17828] [ 4] ./run[0x401e89]
+[motstand:17828] *** End of error message ***
+[motstand:17830] *** Process received signal ***
+[motstand:17830] Signal: Segmentation fault (11)
+[motstand:17830] Signal code: Address not mapped (1)
+[motstand:17830] Failing at address: 0x44000098
+[motstand:17830] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f35827355e0]
+[motstand:17830] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f35831c0ac6]
+[motstand:17830] [ 2] ./run[0x401faa]
+[motstand:17830] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f3582384c05]
+[motstand:17830] [ 4] ./run[0x401e89]
+[motstand:17830] *** End of error message ***
+[motstand:17834] *** Process received signal ***
+[motstand:17834] Signal: Segmentation fault (11)
+[motstand:17834] Signal code: Address not mapped (1)
+[motstand:17834] Failing at address: 0x44000098
+[motstand:17834] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7fc93d6795e0]
+[motstand:17834] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7fc93e104ac6]
+[motstand:17834] [ 2] ./run[0x401faa]
+[motstand:17834] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7fc93d2c8c05]
+[motstand:17834] [ 4] ./run[0x401e89]
+[motstand:17834] *** End of error message ***
+[motstand:17832] *** Process received signal ***
+[motstand:17832] Signal: Segmentation fault (11)
+[motstand:17832] Signal code: Address not mapped (1)
+[motstand:17832] Failing at address: 0x44000098
+[motstand:17832] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f9f33a8e5e0]
+[motstand:17832] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f9f34519ac6]
+[motstand:17832] [ 2] ./run[0x401faa]
+[motstand:17832] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f9f336ddc05]
+[motstand:17832] [ 4] ./run[0x401e89]
+[motstand:17832] *** End of error message ***
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 17821 on node motstand exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+[yishac@motstand Pro5Yisha]$ /usr/lib64/openmpi/bin/mpirun -np 8 ./run SavingMCs 500 10000000 50000 0.05 0.25 0 -d 2.0
+[motstand:19643] *** Process received signal ***
+[motstand:19643] Signal: Segmentation fault (11)
+[motstand:19643] Signal code: Address not mapped (1)
+[motstand:19643] Failing at address: 0x44000098
+[motstand:19647] *** Process received signal ***
+[motstand:19647] Signal: Segmentation fault (11)
+[motstand:19647] Signal code: Address not mapped (1)
+[motstand:19647] Failing at address: 0x44000098
+[motstand:19649] *** Process received signal ***
+[motstand:19649] Signal: Segmentation fault (11)
+[motstand:19649] Signal code: Address not mapped (1)
+[motstand:19649] Failing at address: 0x44000098
+[motstand:19653] *** Process received signal ***
+[motstand:19645] *** Process received signal ***
+[motstand:19645] Signal: Segmentation fault (11)
+[motstand:19645] Signal code: Address not mapped (1)
+[motstand:19645] Failing at address: 0x44000098
+[motstand:19651] *** Process received signal ***
+[motstand:19651] Signal: Segmentation fault (11)
+[motstand:19651] Signal code: Address not mapped (1)
+[motstand:19651] Failing at address: 0x44000098
+[motstand:19640] *** Process received signal ***
+[motstand:19640] Signal: Segmentation fault (11)
+[motstand:19640] Signal code: Address not mapped (1)
+[motstand:19640] Failing at address: 0x44000098
+[motstand:19641] *** Process received signal ***
+[motstand:19641] Signal: Segmentation fault (11)
+[motstand:19641] Signal code: Address not mapped (1)
+[motstand:19641] Failing at address: 0x44000098
+[motstand:19643] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7fa0b10b85e0]
+[motstand:19647] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f73c754b5e0]
+[motstand:19647] [ 1] [motstand:19645] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7fc2a4ad95e0]
+[motstand:19645] [ 1] [motstand:19649] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f6defe005e0]
+[motstand:19649] [ 1] [motstand:19641] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f03055de5e0]
+[motstand:19641] [ 1] [motstand:19643] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7fa0b1b43ac6]
+[motstand:19643] [ 2] ./run[0x401faa]
+[motstand:19643] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f6df088bac6]
+[motstand:19649] [ 2] ./run[0x401faa]
+[motstand:19649] [ 3] [motstand:19651] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f32114ec5e0]
+[motstand:19651] [ 1] [motstand:19640] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f8e94e345e0]
+[motstand:19640] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f8e958bfac6]
+[motstand:19640] [ 2] ./run[0x401faa]
+[motstand:19640] [ 3] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f3211f77ac6]
+[motstand:19651] [ 2] ./run[0x401faa]
+[motstand:19651] [ 3] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7fa0b0d07c05]
+[motstand:19643] [ 4] ./run[0x401e89]
+[motstand:19643] *** End of error message ***
+/usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f73c7fd6ac6]
+[motstand:19647] [ 2] ./run[0x401faa]
+[motstand:19647] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f73c719ac05]
+[motstand:19647] [ 4] ./run[0x401e89]
+[motstand:19647] *** End of error message ***
+/usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7fc2a5564ac6]
+[motstand:19645] [ 2] ./run[0x401faa]
+[motstand:19645] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7fc2a4728c05]
+[motstand:19645] [ 4] ./run[0x401e89]
+[motstand:19645] *** End of error message ***
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7f321113bc05]
+[motstand:19651] [ 4] ./run[0x401e89]
+[motstand:19651] *** End of error message ***
+/usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f0306069ac6]
+[motstand:19641] [ 2] ./run[0x401faa]
+[motstand:19641] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f6defa4fc05]
+[motstand:19649] [ 4] ./run[0x401e89]
+[motstand:19649] *** End of error message ***
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7f8e94a83c05]
+[motstand:19640] [ 4] ./run[0x401e89]
+[motstand:19640] *** End of error message ***
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7f030522dc05]
+[motstand:19641] [ 4] ./run[0x401e89]
+[motstand:19641] *** End of error message ***
+[motstand:19653] Signal: Segmentation fault (11)
+[motstand:19653] Signal code: Address not mapped (1)
+[motstand:19653] Failing at address: 0x44000098
+[motstand:19653] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x7f616d3545e0]
+[motstand:19653] [ 1] /usr/lib64/openmpi/lib/libmpi.so.12(MPI_Comm_size+0x46)[0x7f616dddfac6]
+[motstand:19653] [ 2] ./run[0x401faa]
+[motstand:19653] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x7f616cfa3c05]
+[motstand:19653] [ 4] ./run[0x401e89]
+[motstand:19653] *** End of error message ***
+--------------------------------------------------------------------------
+mpirun noticed that process rank 1 with PID 19641 on node motstand exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+[yishac@motstand Pro5Yisha]$ /usr/lib64/openmpi/bin/mpirun -np 8 ./run SavingMCs 500 10000000 50000 0.05 0.25 0 -d 2.0
