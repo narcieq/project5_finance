@@ -455,6 +455,10 @@ int main(int argc, char* argv[])
 				average += M;
 				M = 0;
 			}
+			for (int i = 0; i < n_agents; i++) {
+				int  c = ceil((agent_matrix[i] / dm)+1);
+				counter[c] += 1;
+			}
 		}
 	}
 
@@ -522,7 +526,7 @@ void Metropolis(int n_agents, int n_trans, long& idum, double *agent_matrix, dou
 		agent_matrix[j] = (1 - epsilon)*totalM2;
 	}
 
-	for (int i = 0; i < n_agents; i++) {
+	/*for (int i = 0; i < n_agents; i++) {
 		M += agent_matrix[i];
 		factor = ceil(agent_matrix[i] / dm);
 		for (int j = 1; j <= factorMax; j++) {
@@ -530,7 +534,7 @@ void Metropolis(int n_agents, int n_trans, long& idum, double *agent_matrix, dou
 				counter[j] += 1.0;
 			}
 		} //counting distibution of money after 1e7 transactions
-	}
+	}*/
 
 
 } // end of Metropolis sampling over agent pair
@@ -554,7 +558,7 @@ void Metropolis_d(int n_agents, int n_trans, long& idum, double *agent_matrix, d
 		agent_matrix[j] = (1 - epsilon)*totalM2;
 	}
 
-	for (int i = 0; i < n_agents; i++) {
+	/*for (int i = 0; i < n_agents; i++) {
 		M += agent_matrix[i];
 		factor = ceil(agent_matrix[i] / dm);
 		for (int j = 1; j <= factorMax; j++) {
@@ -562,7 +566,7 @@ void Metropolis_d(int n_agents, int n_trans, long& idum, double *agent_matrix, d
 				counter[j] += 1.0;
 			}
 		} //counting distibution of money after 1e7 transactions
-	}
+	}*/
 
 
 } // end of Metropolis sampling over agent pair
