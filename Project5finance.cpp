@@ -151,7 +151,7 @@ int main(int argc, char* argv[])
 	//      for(int i=0;i<=factorMax;i++)
 	//      MPI_Reduce(&counter[i], &total_counter[i], 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
 	const int size = factorMax + 1;
-	MPI_Reduce(counter, total_counter, size, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
+	MPI_Reduce(counter, total_counter, size, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
 	cout << "total_counter[1]" << total_counter[1];
 	cout << "counter[1]" << counter[1] << endl;
 	// print results
