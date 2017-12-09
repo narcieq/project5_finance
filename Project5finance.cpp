@@ -24,9 +24,9 @@ ofstream ofile;
 void initialize(int, double*);
 // The metropolis algorithm
 void Metropolis(int, int, long&, double *, double&, double, int, double, int*);
-void Metropolis_d(int, int, long&, double *, double&, double, int, int*, double);
+void Metropolis_d(int, int, long&, double *, double&, double, double);
 // prints to file the results of the calculations
-void output(int, int, double, int, double, double*);
+void output(int, int, double, int, double, int*);
 //  Matrix memory allocation
 //  allocate space for a matrix
 void  **matrix(int, int, int);
@@ -43,8 +43,8 @@ int main(int argc, char* argv[])
 {
 	string outfilename;
 	long idum;
-	int n_agents, n_trans, mcs, my_rank, numprocs, *counter;
-	double *agent_matrix, *total_counter, average, total_average, M, dm, lamda;
+	int n_agents, n_trans, mcs, my_rank, numprocs, *counter, *total_counter;
+	double *agent_matrix, average, total_average, M, dm, lamda;
 
 	//  MPI initializations
 	MPI_Init(&argc, &argv);
@@ -86,6 +86,7 @@ int main(int argc, char* argv[])
 	MPI_Bcast(&n_agents, 1, MPI_INT, 0, MPI_COMM_WORLD);
 	MPI_Bcast(&n_trans, 1, MPI_INT, 0, MPI_COMM_WORLD);
 	MPI_Bcast(&dm, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+	MPI_Bcast(&lamda, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
 	//  Allocate memory for agent matrix
 	agent_matrix = new double[n_agents];
@@ -98,7 +99,8 @@ int main(int argc, char* argv[])
 	int factorMax = ceil(n_agents*1.0 / dm); //number of dm
 											 // Allocate memory for counter and initialize as 0
 	counter = new int[factorMax + 1]();
-	total_counter = new double[factorMax + 1]();
+	
+	total_counter = new int[factorMax + 1]();
 	// every node has its own seed for the random numbers, this is important else
 	// if one starts with the same seed, one ends with the same random numbers
 
@@ -108,13 +110,14 @@ int main(int argc, char* argv[])
 
 	string flag;
 	flag = argv[6];
+	cout << flag << endl;
 
 	// start Monte Carlo computation
 		// check flag
 	for (int i = 1; i < argc; i++) {
 		// task a
 		if ((string(argv[i]).find("-") == 0 && string(argv[i]).find("a") != string::npos)) {
-			MPI_Bcast(&lamda, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+			
 			for (int cycles = myloop_begin; cycles <= myloop_end; cycles++) {
 				cout << "cycle in process : " << cycles << endl;
 				Metropolis(n_agents, n_trans, idum, agent_matrix, M, dm, factorMax, lamda, counter);
@@ -130,7 +133,7 @@ int main(int argc, char* argv[])
 			MPI_Bcast(&alpha, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 			for (int cycles = myloop_begin; cycles <= myloop_end; cycles++) {
 				cout << "cycle in process : " << cycles << endl;
-				Metropolis_d(n_agents, n_trans, idum, agent_matrix, M, dm, factorMax, counter, alpha);
+				Metropolis_d(n_agents, n_trans, idum, agent_matrix, M, lamda, alpha);
 				// update expectation values  for local node
 				average += M;
 				M = 0;
@@ -139,8 +142,9 @@ int main(int argc, char* argv[])
 		}
 
 		for (int i = 0; i < n_agents; i++) {
-			int  c = ceil((agent_matrix[i] / dm) + 1);
+			int  c = ceil((agent_matrix[i] / dm));
 			counter[c] += 1;
+			
 		}
 	}
 
@@ -152,8 +156,8 @@ int main(int argc, char* argv[])
 	//      MPI_Reduce(&counter[i], &total_counter[i], 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
 	const int size = factorMax + 1;
 	MPI_Reduce(counter, total_counter, size, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
-	cout << "total_counter[1]" << total_counter[1];
-	cout << "counter[1]" << counter[1] << endl;
+	//cout << "total_counter[1]" << total_counter[1];
+	//cout << "counter[1]" << counter[1] << endl;
 	// print results
 	if (my_rank == 0) {
 		output(n_agents, mcs, total_average, factorMax, dm, total_counter);
@@ -204,7 +208,7 @@ void Metropolis(int n_agents, int n_trans, long& idum, double *agent_matrix, dou
 		epsilon = ran2(&idum);
 		deltaM = (1 - lamda)*(epsilon*agent_matrix[j] - (1 - epsilon)*agent_matrix[i]);//considering saving lamda
 		agent_matrix[i] = agent_matrix[i] + deltaM;
-		agent_matrix[j] = agent_matrix[i] - deltaM;
+		agent_matrix[j] = agent_matrix[j] - deltaM;
 	}
 
 	for (int i = 0; i < n_agents; i++) {
@@ -213,9 +217,9 @@ void Metropolis(int n_agents, int n_trans, long& idum, double *agent_matrix, dou
 
 } // end of Metropolis sampling over agent pair
 
-void Metropolis_d(int n_agents, int n_trans, long& idum, double *agent_matrix, double& M, double dm, int factorMax, int* counter, double alpha)
+void Metropolis_d(int n_agents, int n_trans, long& idum, double *agent_matrix, double& M, double lamda, double alpha)
 {
-	double epsilon, totalM2;
+	double epsilon, deltaM;
 	int factor, i, j;
 	// loop over random agent pair with 1e7 transactions
 	for (int t = 0; t < n_trans; t++) {
@@ -224,29 +228,23 @@ void Metropolis_d(int n_agents, int n_trans, long& idum, double *agent_matrix, d
 		i = agentPair.i;
 		j = agentPair.j;
 
-		//calculate original total money of the two agents
-		totalM2 = agent_matrix[i] + agent_matrix[j];
+		
 		//calculate new income afer transaction
 		epsilon = ran2(&idum);
-		agent_matrix[i] = epsilon*totalM2;
-		agent_matrix[j] = (1 - epsilon)*totalM2;
+		deltaM = (1 - lamda)*(epsilon*agent_matrix[j] - (1 - epsilon)*agent_matrix[i]);//considering saving lamda
+		agent_matrix[i] = agent_matrix[i] + deltaM;
+		agent_matrix[j] = agent_matrix[j] - deltaM;
 	}
 
-	/*for (int i = 0; i < n_agents; i++) {
+	for (int i = 0; i < n_agents; i++) {
 		M += agent_matrix[i];
-		factor = ceil(agent_matrix[i] / dm);
-		for (int j = 1; j <= factorMax; j++) {
-			if (factor == j) {
-				counter[j] += 1.0;
-			}
-		} //counting distibution of money after 1e7 transactions
-	}*/
+	}
 
 
 } // end of Metropolis sampling over agent pair
 
 
-void output(int n_agents, int mcs, double total_average, int factorMax, double dm, double* total_counter)
+void output(int n_agents, int mcs, double total_average, int factorMax, double dm, int* total_counter)
 {
 	double norm = 1 / ((double)(mcs));  // divided by total number of cycles
 	double Mtotal_average = total_average*norm;
@@ -256,7 +254,8 @@ void output(int n_agents, int mcs, double total_average, int factorMax, double d
 	ofile << setw(15) << setprecision(8) << Mtotal_average / n_agents << endl;
 	for (int i = 1; i <= factorMax; i++) {
 		ofile << setw(15) << setprecision(8) << i*dm << setw(15);
-		ofile << setw(15) << setprecision(8) << total_counter[i] * norm << endl;
+		//cout << "output" << (double)total_counter[i] / 2.0 << endl;
+		ofile << setw(15) << setprecision(8) << (double) (total_counter[i] / 2.0) << endl;
 	}
 	cout << "finished " << endl;
 } // end output function
